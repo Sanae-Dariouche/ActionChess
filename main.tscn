@@ -1,0 +1,223 @@
+[gd_scene load_steps=32 format=1]
+
+[ext_resource path="res://ground.tres" type="TileSet" id=1]
+[ext_resource path="res://gg.tres" type="TileSet" id=2]
+[ext_resource path="res://scripts/enemyArea.gd" type="Script" id=3]
+[ext_resource path="res://scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://sprites/animation/idle1/idle1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/animation/idle1/idle2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/animation/idle1/idle3.png" type="Texture" id=7]
+[ext_resource path="res://sprites/animation/idle1/idle4.png" type="Texture" id=8]
+[ext_resource path="res://sprites/animation/idle1/idle5.png" type="Texture" id=9]
+[ext_resource path="res://sprites/animation/idle1/idle6.png" type="Texture" id=10]
+[ext_resource path="res://sprites/animation/idle1/idle7.png" type="Texture" id=11]
+[ext_resource path="res://sprites/animation/idle1/jump1.png" type="Texture" id=12]
+[ext_resource path="res://sprites/animation/idle1/jump2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/animation/idle1/jump3.png" type="Texture" id=14]
+[ext_resource path="res://sprites/animation/idle1/run1.png" type="Texture" id=15]
+[ext_resource path="res://sprites/animation/idle1/run2.png" type="Texture" id=16]
+[ext_resource path="res://sprites/animation/idle1/run3.png" type="Texture" id=17]
+[ext_resource path="res://sprites/animation/idle1/run4.png" type="Texture" id=18]
+[ext_resource path="res://sprites/animation/idle1/run5.png" type="Texture" id=19]
+[ext_resource path="res://sprites/animation/idle1/run6.png" type="Texture" id=20]
+[ext_resource path="res://sprites/animation/idle1/run7.png" type="Texture" id=21]
+[ext_resource path="res://sprites/animation/idle1/run10.png" type="Texture" id=22]
+[ext_resource path="res://sprites/animation/idle1/run11.png" type="Texture" id=23]
+[ext_resource path="res://sprites/animation/idle1/run12.png" type="Texture" id=24]
+[ext_resource path="res://sprites/animation/idle1/run13.png" type="Texture" id=25]
+[ext_resource path="res://sprites/animation/idle1/attack3.1.png" type="Texture" id=26]
+[ext_resource path="res://sprites/animation/idle1/attack3.png" type="Texture" id=27]
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=28]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 22.8872
+height = 54.8924
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 7.99775
+height = 16.7212
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "jump",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "attack",
+"speed": 7.0
+} ]
+
+[node name="main" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65552, 2, 196607, 2, 131088, 1, 262143, 2, 196624, 1, 327679, 2, 262160, 1, 393215, 2, 327680, 1, 327681, 1, 327682, 1, 327683, 1, 327684, 1, 327685, 1, 327686, 1, 327687, 1, 327688, 1, 327689, 1, 327690, 1, 327691, 1, 327692, 1, 327693, 1, 327694, 1, 327695, 1, 327696, 1, 458751, 2, 393216, 1, 393217, 2, 393218, 2, 393219, 2, 393220, 1, 393221, 1, 393222, 1, 393223, 1, 393224, 1, 393225, 2, 393226, 2, 393227, 2, 393228, 2, 393229, 2, 393230, 2, 393231, 1, 393232, 1, 458752, 1, 458753, 1, 458754, 1, 458755, 1, 458756, 1, 458757, 1, 458758, 1, 458759, 1, 458760, 1, 458761, 1, 458762, 1, 458763, 1, 458764, 1, 458765, 1, 458766, 1, 458767, 1, 524288, 1, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 589824, 1, 589825, 1, 589826, 1, 589827, 1, 589828, 1, 589829, 1, 589830, 1, 589831, 1, 589832, 1, 589833, 1, 589834, 1, 589835, 1, 589836, 1, 589837, 1, 589838, 1, 589839, 1 )
+
+[node name="design" type="TileMap" parent="."]
+
+transform/pos = Vector2( -0.185669, -6.508 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 65536, 30, 65537, 29, 65538, 159, 65539, 28, 65540, 27, 65541, 26, 65542, 25, 65543, 24, 65544, 23, 65545, 22, 65546, 21, 65547, 20, 65548, 19, 65549, 18, 65550, 17, 65551, 16, 196607, 2, 131072, 31, 131073, 32, 131074, 33, 131075, 34, 131076, 35, 131077, 36, 131078, 37, 131079, 38, 131080, 39, 131081, 40, 131082, 41, 131083, 42, 131084, 43, 131085, 44, 131086, 45, 131087, 46, 262143, 2, 196608, 62, 196609, 61, 196610, 60, 196611, 59, 196612, 58, 196613, 57, 196614, 56, 196615, 55, 196616, 54, 196617, 53, 196618, 52, 196619, 51, 196620, 50, 196621, 49, 196622, 48, 196623, 47, 327679, 2, 262144, 63, 262145, 64, 262146, 65, 262147, 66, 262148, 67, 262149, 68, 262150, 69, 262151, 70, 262152, 71, 262153, 72, 262154, 73, 262155, 74, 262156, 75, 262157, 76, 262158, 77, 262159, 78, 393215, 2, 327680, 79, 327681, 80, 327682, 81, 327683, 82, 327684, 83, 327685, 84, 327686, 85, 327687, 86, 327688, 87, 327689, 88, 327690, 89, 327691, 90, 327692, 91, 327693, 92, 327694, 93, 327695, 94, 458751, 2, 393216, 110, 393217, 109, 393218, 108, 393219, 107, 393220, 106, 393221, 105, 393222, 104, 393223, 103, 393224, 102, 393225, 101, 393226, 100, 393227, 99, 393228, 98, 393229, 97, 393230, 96, 393231, 95, 458752, 111, 458753, 112, 458754, 113, 458755, 114, 458756, 115, 458757, 116, 458758, 117, 458759, 118, 458760, 119, 458761, 120, 458762, 121, 458763, 122, 458764, 123, 458765, 124, 458766, 125, 458767, 126, 524288, 142, 524289, 141, 524290, 140, 524291, 139, 524292, 138, 524293, 137, 524294, 136, 524295, 135, 524296, 134, 524297, 133, 524298, 132, 524299, 131, 524300, 130, 524301, 129, 524302, 128, 524303, 127, 589824, 144, 589825, 153, 589826, 153, 589827, 153, 589828, 153, 589829, 153, 589830, 153, 589831, 153, 589832, 153, 589833, 153, 589834, 153, 589835, 153, 589836, 153, 589837, 153, 589838, 153, 589839, 153 )
+
+[node name="enemyArea" type="Area2D" parent="."]
+
+transform/pos = Vector2( 787.874, 253.028 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1.19751, 0.598724 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyArea"]
+
+transform/pos = Vector2( 1.19751, 0.598724 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="player" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( -301.008, -85.1284 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 2.28596, 0, 0, 2.27245, 415.556, 280.61 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="player"]
+
+transform/pos = Vector2( 417.104, 281.48 )
+transform/scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 3 )
+animation = "attack"
+frame = 1
+
+[node name="Position2D" type="Position2D" parent="player/Sprite"]
+
+transform/pos = Vector2( 97.5023, -59.7313 )
+transform/rot = -5.20983
+
+[node name="Timer" type="Timer" parent="player/Sprite"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+
+transform/pos = Vector2( 415.556, 280.61 )
+transform/scale = Vector2( 2.28596, 2.27245 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="enemy" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 787.874, 253.028 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 2.28596, 0, 0, 2.27245, 0.455627, 7.26927 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 28 )
+
+[node name="Sprite" type="AnimatedSprite" parent="enemy"]
+
+editor/display_folded = true
+transform/pos = Vector2( 3.51105, 2.10999 )
+transform/scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 3 )
+animation = "attack"
+frame = 1
+
+[node name="Position2D" type="Position2D" parent="enemy/Sprite"]
+
+transform/pos = Vector2( 97.5023, -59.7313 )
+transform/rot = -5.20983
+
+[node name="Timer" type="Timer" parent="enemy/Sprite"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+
+transform/pos = Vector2( 0.455627, 7.26927 )
+transform/scale = Vector2( 2.28596, 2.27245 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="enemyArea" to="enemyArea" method="_on_enemyArea_area_enter"]
+
+[connection signal="body_enter" from="enemyArea" to="enemyArea" method="_on_enemyArea_body_enter"]
+
+[connection signal="timeout" from="player/Sprite/Timer" to="player" method="_on_Timer_timeout"]
+
+

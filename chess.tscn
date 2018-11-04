@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://chess.gd" type="Script" id=1]
+[ext_resource path="res://breaks.tres" type="TileSet" id=2]
+[ext_resource path="res://whites.tres" type="TileSet" id=3]
+[ext_resource path="res://blacks.tres" type="TileSet" id=4]
+[ext_resource path="res://scripts/AI.gd" type="Script" id=5]
+
+[node name="main_scene" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="board" type="TileMap" parent="."]
+
+mode = 1
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 128, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -262140, 56, -262139, 57, -262138, 58, -262137, 59, -262136, 60, -262135, 61, -262134, 62, -262133, 63, -196604, 48, -196603, 49, -196602, 50, -196601, 51, -196600, 52, -196599, 53, -196598, 54, -196597, 55, -131068, 40, -131067, 41, -131066, 42, -131065, 43, -131064, 44, -131063, 45, -131062, 46, -131061, 47, -65532, 32, -65531, 33, -65530, 34, -65529, 35, -65528, 36, -65527, 37, -65526, 38, -65525, 39, 4, 24, 5, 25, 6, 26, 7, 27, 8, 28, 9, 29, 10, 30, 11, 31, 65540, 16, 65541, 17, 65542, 18, 65543, 19, 65544, 20, 65545, 21, 65546, 22, 65547, 23, 131076, 8, 131077, 9, 131078, 10, 131079, 11, 131080, 12, 131081, 13, 131082, 14, 131083, 15, 196612, 0, 196613, 1, 196614, 2, 196615, 3, 196616, 4, 196617, 5, 196618, 6, 196619, 7 )
+
+[node name="white" type="TileMap" parent="."]
+
+transform/pos = Vector2( -5, -11 )
+mode = 1
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 128, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -262140, 5, -262139, 2, -262138, 0, -262137, 4, -262136, 1, -262135, 0, -262134, 2, -262133, 5, -196604, 3, -196603, 3, -196602, 3, -196601, 3, -196600, 3, -196599, 3, -196598, 3, -196597, 3 )
+
+[node name="black" type="TileMap" parent="."]
+
+transform/pos = Vector2( 0, -16 )
+mode = 1
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 128, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 131076, 3, 131077, 3, 131078, 3, 131079, 3, 131080, 3, 131081, 3, 131082, 3, 131083, 3, 196612, 5, 196613, 2, 196614, 0, 196615, 1, 196616, 4, 196617, 0, 196618, 2, 196619, 5 )
+
+[node name="AI" type="Node" parent="."]
+
+script/script = ExtResource( 5 )
+
+
