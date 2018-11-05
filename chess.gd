@@ -46,7 +46,10 @@ func make_piece_move(move):
 	pos = board.map_to_world(board.get_used_cells_by_id(lacase)[0])
 	piece = white_pieces.world_to_map(pos)
 	white_pieces.set_cellv(piece,temp)
-	
+	if move[4]!='-':
+		autoload.switch_scene("res://main.tscn")
+		var bpiece = black_pieces.world_to_map(pos)
+		black_pieces.set_cellv(bpiece,-1)
 	
 func _input(event):
 	#selection de la piece a bouger

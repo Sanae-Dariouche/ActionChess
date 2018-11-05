@@ -26,9 +26,10 @@ func switch_scene( temp_scene ):
     get_tree().set_current_scene( new_scene )
 
 func load_scene():
-    if saved_scene != null:
+	if saved_scene != null:
         # free temporary scene
-        get_tree().get_current_scene().queue_free()
+		get_tree().get_current_scene().queue_free()
         # add saved scene back to the tree
-        get_tree().get_root().add_child(saved_scene)
-        saved_scene = null
+		get_tree().get_root().add_child(saved_scene)
+		get_tree().set_current_scene( saved_scene)
+		saved_scene = null
