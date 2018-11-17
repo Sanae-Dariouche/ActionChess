@@ -7,6 +7,11 @@ This project is a modified chess game that [Boubker Elamri](https://github.com/b
 ## Game concept
 
 The game is a normal chess game until a piece attacks the other. The scene then transforms into a 1v1 combat in which the losing piece is the one getting captured.
+![alt text](https://github.com/Sanae-Dariouche/ActionChess/blob/master/Start.PNG)
+
+![alt text](https://github.com/Sanae-Dariouche/ActionChess/blob/master/chessboard.PNG)
+
+![alt text](https://github.com/Sanae-Dariouche/ActionChess/blob/master/fight.PNG)
 ### Prerequisites
 
 Godot Game engine v2.1.4 [link](https://github.com/godotengine/godot/releases/tag/2.1.4-stable)
